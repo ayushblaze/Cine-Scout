@@ -79,7 +79,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 🎥 Screenshots
 
-[Add screenshots of your application here]
+Coming soon!
 
 ## 🌟 Acknowledgements
 
@@ -90,3 +90,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 
 **Happy Movie Tracking! 🍿🎥**
+
+---
+
+**Made with ❤️ by ayushblaze**
