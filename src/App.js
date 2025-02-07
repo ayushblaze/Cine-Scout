@@ -67,6 +67,10 @@ export default function App() {
     setSelectedId(null);
   }
 
+  function handleAddWatched(movie) {
+    setWatched(watched => [...watched, movie]);
+  }
+
   useEffect(() => {
     async function fetchMovies() {
       try {
@@ -121,7 +125,7 @@ export default function App() {
         </Box>
         {/* <WatchedBox /> */}
         <Box>
-          {selectedId ? <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} /> : <><WatchedSummary watched={watched} />
+          {selectedId ? <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} onAddWatched={handleAddWatched} watched={watched} /> : <><WatchedSummary watched={watched} />
             <WatchedMoviesList watched={watched} /></>}
         </Box>
       </Main>
@@ -251,11 +255,13 @@ function Movie({ movie, onSelectMovie }) {
   )
 }
 
-function MovieDetails({ selectedId, onCloseMovie }) {
+function MovieDetails({ selectedId, onCloseMovie, onAddWatched }) {
   const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [userRating, setUserRating] = useState('');
 
   const {
-    Title: title, 
+    Title: title,
     Year: year,
     Poster: poster,
     Runtime: runtime,
@@ -268,55 +274,73 @@ function MovieDetails({ selectedId, onCloseMovie }) {
     Ratings: ratings,
   } = movie;
 
+  function handleAdd() {
+    const newWatchedMovie = {
+      imdbID: selectedId,
+      Title: title,
+      Year: year,
+      Poster: poster,
+      imdbRating: Number(imdbRating),
+      runtime: Number(runtime.split(" ").at(0)),
+      userRating,
+    };
+    onAddWatched(newWatchedMovie);
+    onCloseMovie();
+  }
+
   console.log(title, year);
 
   useEffect(() => {
     async function getMovieDetails() {
+      setIsLoading(true);
       const res = await fetch(`http://www.omdbapi.com/?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&i=${selectedId}`);
       const data = await res.json();
       console.log("Single Movie:", data);
       setMovie(data);
+      setIsLoading(false);
     }
     getMovieDetails();
   }, [selectedId]);
 
   return (
     <div className="details">
-      <header>
-        <button className="btn-back" onClick={onCloseMovie}>&larr;</button>
+      {isLoading ? <Loader /> :
+        (<><header>
+          <button className="btn-back" onClick={onCloseMovie}>&larr;</button>
 
-        <img src={poster} alt={`${title} poster`} />
-        <div className="details-overview">
-          <h2>{title}</h2>
-          <p>{released} &bull; {runtime}</p>
-          <p>{genre}</p>
-          <p><span>⭐️</span> {imdbRating} IMDb rating</p>
-          <p><span>🍅</span> {ratings?.[1]?.Value} Rotten Tomatoes</p>
-        </div>
-      </header>
-      <section style={{
-        background: "#2b2b2b",
-        padding: "20px",
-        borderRadius: "8px",
-        lineHeight: "1.5",
-        color: "#ddd",
-      }}>
-        <div className="rating">
-          <StarRating maxRating={10} size={24} />
-        </div>
-        <p style={{ fontStyle: "italic", color: "#bbb", fontSize: "1.4rem", fontWeight: "bold" }}>
-          {plot}
-        </p>
-        <p style={{ fontSize: "1.4rem", fontWeight: "bold"  }}>
-          <span style={{ fontWeight: "bold", color: "#fff" }}>👤 Starring:</span>
-          <span style={{ marginLeft: "5px", color: "#ccc" }}>{actors}</span>
-        </p>
-        <p style={{ fontSize: "1.4rem", fontWeight: "bold"  }}>
-          <span style={{ fontWeight: "bold", color: "#fff" }}>🎥 Director:</span>
-          <span style={{ marginLeft: "5px", color: "#ccc" }}>{director}</span>
-        </p>
-      </section>
-
+          <img src={poster} alt={`${title} poster`} />
+          <div className="details-overview">
+            <h2>{title}</h2>
+            <p>{released} &bull; {runtime}</p>
+            <p>{genre}</p>
+            <p><span>⭐️</span> {imdbRating} IMDb rating</p>
+            <p><span>🍅</span> {ratings?.[1]?.Value} Rotten Tomatoes</p>
+          </div>
+        </header>
+          <section style={{
+            background: "#2b2b2b",
+            padding: "20px",
+            borderRadius: "8px",
+            lineHeight: "1.5",
+            color: "#ddd",
+          }}>
+            <div className="rating">
+              <StarRating maxRating={10} size={24} onSetRating={setUserRating} />
+              {userRating > 0 && <button className="btn-add" onClick={handleAdd}>+ Add to List</button>}
+            </div>
+            <p style={{ fontStyle: "italic", color: "#bbb", fontSize: "1.4rem", fontWeight: "bold" }}>
+              {plot}
+            </p>
+            <p style={{ fontSize: "1.4rem", fontWeight: "bold" }}>
+              <span style={{ fontWeight: "bold", color: "#fff" }}>👤 Starring:</span>
+              <span style={{ marginLeft: "5px", color: "#ccc" }}>{actors}</span>
+            </p>
+            <p style={{ fontSize: "1.4rem", fontWeight: "bold" }}>
+              <span style={{ fontWeight: "bold", color: "#fff" }}>🎥 Director:</span>
+              <span style={{ marginLeft: "5px", color: "#ccc" }}>{director}</span>
+            </p>
+          </section></>)
+      }
     </div>
   )
 }
@@ -362,6 +386,7 @@ function WatchedMoviesList({ watched }) {
 }
 
 function WatchedMovie({ movie }) {
+  console.log("FROM:", movie);
   return (
     <li key={movie.imdbID}>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
