@@ -352,3 +352,106 @@ SPACING SYSTEM (px)
 FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 /52 / 62 / 74 / 86 / 98
 */
+
+/* Responsive Design Media Queries */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+
+  body {
+    padding: 1rem;
+  }
+
+  .nav-bar {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 1rem;
+    padding: 1rem;
+    height: auto;
+  }
+
+  .logo {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .search {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .num-results {
+    justify-self: center;
+  }
+
+  .main {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .box {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .list li {
+    grid-template-columns: 3rem 1fr;
+    padding: 1rem;
+    column-gap: 1rem;
+  }
+
+  .details {
+    padding: 1rem;
+  }
+
+  .details header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .details-overview {
+    margin-top: 1rem;
+  }
+
+  .details img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .rating {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-add {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav-bar {
+    padding: 0.5rem;
+  }
+
+  .logo span {
+    font-size: 2.4rem;
+  }
+
+  .logo h1 {
+    font-size: 1.8rem;
+  }
+
+  .search {
+    font-size: 1.4rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .list li {
+    grid-template-columns: 2.5rem 1fr;
+    padding: 0.8rem;
+  }
+}
