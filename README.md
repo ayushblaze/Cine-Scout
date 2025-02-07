@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# 🎬 Cine Scout: Your Personal Movie Companion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🌟 Overview
 
-## Available Scripts
+Cine Scout is a modern, interactive React-based web application that helps movie enthusiasts discover, track, and rate their favorite films. Powered by the OMDb API, this app provides a seamless movie browsing and watchlist management experience.
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+### 🔍 Powerful Movie Search
+- Real-time movie search with instant results
+- Comprehensive movie information at your fingertips
+- Powered by the OMDb API for accurate and up-to-date data
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 📝 Watchlist Management
+- Add movies to your watched list
+- Rate movies you've seen
+- Track your movie-watching history
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🎨 Intuitive User Interface
+- Clean, responsive design
+- Easy-to-use star rating system
+- Smooth, interactive user experience
 
-### `npm test`
+## 🚀 Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React 19
+- OMDb API
+- Modern React Hooks (useState, useEffect)
+- CSS for styling
+- Responsive design principles
 
-### `npm run build`
+## 🛠 Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v14 or later)
+- npm (v6 or later)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔧 Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/cine-scout.git
+cd cine-scout
+```
 
-### `npm run eject`
+2. Install dependencies
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Set up OMDb API Key
+- Create a `.env` file in the project root
+- Add your OMDb API key:
+```
+REACT_APP_OMDB_API_KEY=your_api_key_here
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Start the development server
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🌐 Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm run build
+```
 
-## Learn More
+## 🤝 Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📄 License
 
-### Code Splitting
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎥 Screenshots
 
-### Analyzing the Bundle Size
+[Add screenshots of your application here]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🌟 Acknowledgements
 
-### Making a Progressive Web App
+- [React](https://reactjs.org/)
+- [OMDb API](http://www.omdbapi.com/)
+- [Create React App](https://create-react-app.dev/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Happy Movie Tracking! 🍿🎥**
