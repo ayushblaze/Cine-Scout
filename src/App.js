@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StarRating from "./StarRating";
 
 const tempMovieData = [
   {
@@ -251,10 +252,73 @@ function Movie({ movie, onSelectMovie }) {
 }
 
 function MovieDetails({ selectedId, onCloseMovie }) {
-  return (<div className="details">
-    <button className="btn-back" onClick={onCloseMovie}>&larr;</button>
-    {selectedId}
-  </div>)
+  const [movie, setMovie] = useState({});
+
+  const {
+    Title: title, 
+    Year: year,
+    Poster: poster,
+    Runtime: runtime,
+    imdbRating,
+    Plot: plot,
+    Released: released,
+    Actors: actors,
+    Director: director,
+    Genre: genre,
+    Ratings: ratings,
+  } = movie;
+
+  console.log(title, year);
+
+  useEffect(() => {
+    async function getMovieDetails() {
+      const res = await fetch(`http://www.omdbapi.com/?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&i=${selectedId}`);
+      const data = await res.json();
+      console.log("Single Movie:", data);
+      setMovie(data);
+    }
+    getMovieDetails();
+  }, [selectedId]);
+
+  return (
+    <div className="details">
+      <header>
+        <button className="btn-back" onClick={onCloseMovie}>&larr;</button>
+
+        <img src={poster} alt={`${title} poster`} />
+        <div className="details-overview">
+          <h2>{title}</h2>
+          <p>{released} &bull; {runtime}</p>
+          <p>{genre}</p>
+          <p><span>⭐️</span> {imdbRating} IMDb rating</p>
+          <p><span>🍅</span> {ratings?.[1]?.Value} Rotten Tomatoes</p>
+        </div>
+      </header>
+      <section style={{
+        background: "#2b2b2b",
+        padding: "20px",
+        borderRadius: "8px",
+        lineHeight: "1.5",
+        color: "#ddd",
+      }}>
+        <div className="rating">
+          <StarRating maxRating={10} size={24} />
+        </div>
+        <p style={{ fontStyle: "italic", color: "#bbb", fontSize: "1.4rem", fontWeight: "bold" }}>
+          {plot}
+        </p>
+        <p style={{ fontSize: "1.4rem", fontWeight: "bold"  }}>
+          <span style={{ fontWeight: "bold", color: "#fff" }}>👤 Starring:</span>
+          <span style={{ marginLeft: "5px", color: "#ccc" }}>{actors}</span>
+        </p>
+        <p style={{ fontSize: "1.4rem", fontWeight: "bold"  }}>
+          <span style={{ fontWeight: "bold", color: "#fff" }}>🎥 Director:</span>
+          <span style={{ marginLeft: "5px", color: "#ccc" }}>{director}</span>
+        </p>
+      </section>
+
+    </div>
+  )
 }
 
 function WatchedSummary({ watched }) {
