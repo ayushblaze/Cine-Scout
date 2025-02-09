@@ -1,11 +1,11 @@
 # 🎬 Cine Scout: Advanced Movie Tracking Application
 
-## 🌟 Project Overview
+## Project Overview
 Cine Scout is a sophisticated React-based movie exploration and tracking application designed to provide an intuitive and performant user experience.
 
-## 🚀 Key Technical Implementations
+## Key Technical Implementations
 
-### 🔒 Performance Optimization Techniques
+### Performance Optimization Techniques
 - **Race Condition Prevention**
   - Implemented `AbortController` to cancel ongoing API requests
   - Ensures only the most recent search request is processed
@@ -16,12 +16,12 @@ Cine Scout is a sophisticated React-based movie exploration and tracking applica
   - Prevents memory leaks by properly managing component lifecycles
   - Ensures optimal performance and resource utilization
 
-### 🛡️ Advanced React Patterns
+### Advanced React Patterns
 - Custom hook implementations
 - Efficient state management
 - Modular component architecture
 
-## ✨ Application Features
+## Application Features
 
 ### 🔍 Movie Search
 - Real-time movie search functionality
@@ -36,7 +36,7 @@ Cine Scout is a sophisticated React-based movie exploration and tracking applica
   - Watched movie count
   - Total runtime analysis
 
-### 🌈 User Experience
+### 🧑 User Experience
 - Responsive and intuitive interface
 - Smooth navigation between movie lists
 - Interactive movie details view
@@ -49,7 +49,7 @@ Cine Scout is a sophisticated React-based movie exploration and tracking applica
 - AbortController
 - Custom React Hooks
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v14 or later)
