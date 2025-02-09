@@ -94,9 +94,6 @@ npm start
 4. Push to the branch
 5. Open a Pull Request
 
-## 📝 License
-[Specify Your License]
-
 ## 💡 Troubleshooting
 - Verify OMDB API key validity
 - Check internet connectivity
