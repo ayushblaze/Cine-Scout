@@ -82,7 +82,7 @@ export default function App() {
       try {
         setIsLoading(true);
         setError('');
-        const res = await fetch(`http://www.omdbapi.com/?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`, { signal: controller.signal });
+        const res = await fetch(`https://www.omdbapi.com/?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`, { signal: controller.signal });
 
         if (!res.ok) {
           throw new Error('Couldn\'t fetch movies :(');
@@ -316,7 +316,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   useEffect(() => {
     async function getMovieDetails() {
       setIsLoading(true);
-      const res = await fetch(`http://www.omdbapi.com/?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&i=${selectedId}`);
+      const res = await fetch(`https://www.omdbapi.com/?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&i=${selectedId}`);
       const data = await res.json();
       console.log("Single Movie:", data);
       setMovie(data);
