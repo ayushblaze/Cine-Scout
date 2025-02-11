@@ -36,6 +36,12 @@ Cine Scout is a sophisticated React-based movie exploration and tracking applica
   - Watched movie count
   - Total runtime analysis
 
+### 💾 Local Storage Persistence
+- Seamless data persistence using browser's localStorage
+- Automatically saves user's movie lists and preferences
+- Enables offline access to tracked movies
+- Enhances user experience by preserving application state between sessions
+
 ### 🧑 User Experience
 - Responsive and intuitive interface
 - Smooth navigation between movie lists
