@@ -20,6 +20,25 @@ Cine Scout is a sophisticated React-based movie exploration and tracking applica
 - Custom hook implementations
 - Efficient state management
 - Modular component architecture
+### Custom React Hooks
+- **`useLocalStorageState`**: 
+  - Simplified localStorage state management
+  - Automatically persists and retrieves state across browser sessions
+  - Reduces boilerplate code for localStorage operations
+
+- **`useKey`**: 
+  - Centralized keyboard event handling
+  - Enables easy global keyboard shortcut implementations
+  - Supports case-insensitive key matching
+
+### Keyboard Interactions
+- **Escape Key Functionality**
+  - Closes movie details modal instantly
+  - Provides smooth, intuitive user navigation
+
+- **Enhanced User Experience**
+  - Keyboard-driven interactions improve accessibility
+  - Reduces reliance on mouse or touch interactions
 
 ## Application Features
 
